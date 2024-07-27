@@ -1,4 +1,7 @@
 @host=http://localhost:8080
 
-# Health check
+### Health check
 GET {{host}}/health
+
+### Create user
+POST {{host}}/v1/users

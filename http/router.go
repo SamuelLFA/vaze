@@ -5,9 +5,14 @@ import (
 )
 
 type HealthHandler interface {
-	Get(w http.ResponseWriter, r *http.Request)
+	HealthCheck(w http.ResponseWriter, r *http.Request)
 }
 
-func RegisterAPIs(health HealthHandler) {
-	http.HandleFunc("/health", health.Get)
+type UserHandler interface {
+	Create(w http.ResponseWriter, r *http.Request)
+}
+
+func RegisterAPIs(healthHandler HealthHandler, userHandler UserHandler) {
+	http.HandleFunc("/health", healthHandler.HealthCheck)
+	http.HandleFunc("/v1/users", userHandler.Create)
 }

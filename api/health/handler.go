@@ -12,11 +12,11 @@ type getResponse struct {
 	Ok bool `json:"ok"`
 }
 
-func New() *healthHandler {
+func NewHandler() *healthHandler {
 	return &healthHandler{}
 }
 
-func (*healthHandler) Get(w http.ResponseWriter, r *http.Request) {
+func (*healthHandler) HealthCheck(w http.ResponseWriter, r *http.Request) {
 	response := getResponse{Ok: true}
 	util.BuildJSONResponse(w, response, http.StatusOK)
 }
