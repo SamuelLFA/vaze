@@ -5,3 +5,8 @@ GET {{host}}/health
 
 ### Create user
 POST {{host}}/v1/users
+
+{
+    "email": "email@email.com",
+    "password": "12345678"
+}
